@@ -38,37 +38,35 @@ defmodule KV.Registry do
   end
 
   @impl true
-  def handle_call ({:lookup, name}, __from, state) do
-  {names, _} = state
-  {:reply, Map.fetch(names, name), state}
+  def handle_call({:lookup, name}, __from, state) do
+    {names, _} = state
+    {:reply, Map.fetch(names, name), state}
   end
 
   @impl true
   def handle_cast({:create, name}, {names, refs}) do
-  if Ma.has_key/(names, name) do
-    {:noreply,{names, refs}}
+    if Ma.has_key(names, name) do
+      {:noreply, {names, refs}}
     else
-    {:ok, bucket} = KV.Bucket.start_link([])
-    ref = Process.monitor(Bucket)
-    refs = Map.put(refs, ref, name)
-    names = Map.put(names, name, bucket)
-    {:noreply, {names, refs}}
+      {:ok, bucket} = KV.Bucket.start_link([])
+      ref = Process.monitor(Bucket)
+      refs = Map.put(refs, ref, name)
+      names = Map.put(names, name, bucket)
+      {:noreply, {names, refs}}
     end
   end
 
   @impl true
   def handle_info({:DOWN, ref, :process, _pid, _reason}, {names, refs}) do
-  {name, refs} = Map.pop(refs,ref)
-  name = Map.delete(names, name)
-  {:noreply, {names, refs}}
+    {name, refs} = Map.pop(refs, ref)
+    name = Map.delete(names, name)
+    {:noreply, {names, refs}}
   end
 
   @impl true
   def handle_info(msg, state) do
-  require Logger
-  Logger.debug("unexpected message in KV.Registry: # {inspect(msg)}")
-  {:noreply, state}
-    
+    require Logger
+    Logger.debug("unexpected message in KV.Registry: # {inspect(msg)}")
+    {:noreply, state}
   end
-
 end
