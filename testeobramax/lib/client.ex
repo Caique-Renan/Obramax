@@ -1,4 +1,13 @@
 defmodule Testeobramax.Client do
+  @moduledoc """
+  Variável @MODULEDOC ausente !!!
+
+  ## Exemplo de execução:
+
+      iex> Testeobramax.Client.main ["75075640", "1234", "--input-file", "./read.json"]
+
+  """
+
   def main([]), do: IO.puts(@moduledoc)
   def main([help_opt]) when help_opt == "-h" or help_opt == "--help", do: IO.puts(@moduledoc)
 
