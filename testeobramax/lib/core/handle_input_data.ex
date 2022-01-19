@@ -1,9 +1,9 @@
 defmodule Testeobramax.Core.HandleInputData do
+  alias Testeobramax.Core.OutputShippingItem
 
-    @incompatibility_active
-    @incompatibility_cep_range
-    @incompatibility_min_price
-
+  @incompatibility_active "incompatibility_active"
+  @incompatibility_cep_range "incompatibility_cep_range"
+  @incompatibility_min_price "incompatibility_min_price"
 
   @spec call(input_data :: List.t(), cep :: String.t(), price :: Integer.t()) :: [
           OutputShippingItem.t()

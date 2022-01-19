@@ -1,6 +1,5 @@
 defmodule Testeobramax.Validates.ValidateInputFile do
-    
-     @default_input_file "./default.json"
+  @default_input_file "./default.json"
 
   @spec call(opts :: Keyword.t()) :: {:ok, List.t()} | {:error, atom()}
   def call(opts \\ []) do
@@ -41,5 +40,4 @@ defmodule Testeobramax.Validates.ValidateInputFile do
 
   defp handle_error({:error, %Jason.DecodeError{}}), do: {:error, :invalid_json_file}
   defp handle_error(error), do: error
-  
 end

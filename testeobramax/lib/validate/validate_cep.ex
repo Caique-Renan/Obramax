@@ -1,5 +1,4 @@
 defmodule Testeobramax.Validates.ValidateCep do
-    
   @spec call(cep :: String.t()) :: {:ok, String.t()} | {:error, atom()}
   def call(cep) do
     with {:ok, cep} <- validate_cep_format(cep),

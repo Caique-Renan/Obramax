@@ -1,6 +1,5 @@
 defmodule Testeobramax.Core.OutputShippingItem do
-    
-    @derive Jason.Encoder
+  @derive Jason.Encoder
   defstruct method: "", valid: true, incompatibilities: []
   @type t :: %__MODULE__{method: String.t(), valid: boolean(), incompatibilities: [String.t()]}
 
