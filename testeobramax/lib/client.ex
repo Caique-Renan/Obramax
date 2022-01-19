@@ -1,7 +1,15 @@
-defmodule Testeobramax.client do
-          
-    def main([]), do: IO.puts(@moduledoc)
-    def main([help_opt]) when help_opt == "-h" or help_opt == "--help", do: IO.puts(@moduledoc)
+defmodule Testeobramax.Client do
+  @moduledoc """
+  Variável @MODULEDOC ausente !!!
+
+  ## Exemplo de execução:
+
+      iex> Testeobramax.Client.main ["75075640", "1234", "--input-file", "./read.json"]
+
+  """
+
+  def main([]), do: IO.puts(@moduledoc)
+  def main([help_opt]) when help_opt == "-h" or help_opt == "--help", do: IO.puts(@moduledoc)
 
   def main(args) do
     case parse_args(args) do
@@ -32,7 +40,7 @@ defmodule Testeobramax.client do
 
   defp response(opts) do
     opts
-    |> ShippingValidate.run_validate()
+    |> Testeobramax.run_validate()
     |> case do
       {:ok, result} ->
         result
