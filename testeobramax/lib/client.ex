@@ -1,5 +1,5 @@
-defmodule Testeobramax.client do
-          
+defmodule Testeobramax.Client do
+
     def main([]), do: IO.puts(@moduledoc)
     def main([help_opt]) when help_opt == "-h" or help_opt == "--help", do: IO.puts(@moduledoc)
 

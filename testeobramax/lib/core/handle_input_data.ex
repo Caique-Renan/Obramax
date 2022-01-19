@@ -1,6 +1,4 @@
-defmodule testeobramax.Core.handle_input_data
-
-    alias Testeobramax.Core.OutputShippingItem
+defmodule Testeobramax.Core.HandleInputData do
 
     @incompatibility_active
     @incompatibility_cep_range
@@ -62,4 +60,4 @@ defmodule testeobramax.Core.handle_input_data
        do: [@incompatibility_min_price | incompatibilities]
 
   defp check_price(incompatibilities, _shipping_item, _price), do: incompatibilities
-  ends
+end
