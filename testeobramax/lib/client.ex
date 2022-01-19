@@ -31,7 +31,7 @@ defmodule Testeobramax.Client do
 
   defp response(opts) do
     opts
-    |> ShippingValidate.run_validate()
+    |> Testeobramax.run_validate()
     |> case do
       {:ok, result} ->
         result
